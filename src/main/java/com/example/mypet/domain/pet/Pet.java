@@ -1,4 +1,4 @@
-package com.example.mypet.abandoned.domain.pet;
+package com.example.mypet.domain.pet;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,17 @@ import javax.persistence.Id;
 public class Pet {
 
     @Id
-    private int id;
+    private long id;
+    private long situationId;
+    private String name;
+    private int age;
+    private boolean isExpectAge;
+    private char gender;
+    private boolean isNeutered;
+    private String openDate;
+    private String closeDate;
+    private long reporter;
+    private long supporter;
+    private long classificationId;
 
-    private int sortId;
 }
