@@ -11,7 +11,7 @@
     PK, situation(varchar(100)) 
     
 #### Member ( member )
-    PK, name(varhar(100)), phone(varchar(100)), email(varchar(100)), addInfo(json),
+    PK, name(varhar(100)), phone(varchar(30)), email(varchar(100)), addInfo(json),
     
 #### Animal Classification ( classification )
     PK, name(varchar(100))
@@ -20,4 +20,4 @@
     PK, name(varchar(100))
     
 #### Board ( board )
-    PK, BoardKindPK, title(varchar(500)), description(varchar(10000))
+    PK, BoardKindPK, MemberPK, title(varchar(500)), description(varchar(10000)), files(varchar(10000))
