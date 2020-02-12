@@ -25,4 +25,16 @@ public class Pet {
     private long supporter;
     private long classificationId;
 
+    public int compareTo(Pet pet, PetSortCondition condition) {
+        return 0;
+    }
+
+}
+
+enum PetSortCondition {
+    SITUATION, NAME, AGE, GENDER, ISNEUTERED, OPENDATE, CLOSEDATE, CLASSIFICATIONID;
+
+    public PetSortCondition getSortCondition(String sortCondition) {
+        return PetSortCondition.valueOf(sortCondition);
+    }
 }
