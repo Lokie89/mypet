@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,16 +26,4 @@ public class Pet {
     private long supporter;
     private long classificationId;
 
-    public int compareTo(Pet pet, PetSortCondition condition) {
-        return 0;
-    }
-
-}
-
-enum PetSortCondition {
-    SITUATION, NAME, AGE, GENDER, ISNEUTERED, OPENDATE, CLOSEDATE, CLASSIFICATIONID;
-
-    public PetSortCondition getSortCondition(String sortCondition) {
-        return PetSortCondition.valueOf(sortCondition);
-    }
 }

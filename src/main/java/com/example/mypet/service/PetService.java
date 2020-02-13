@@ -4,8 +4,6 @@ import com.example.mypet.domain.classification.ClassificationRepository;
 import com.example.mypet.domain.pet.Pet;
 import com.example.mypet.domain.pet.PetRepository;
 import com.example.mypet.domain.petsituations.PetSituationsRepository;
-import jdk.jfr.DataAmount;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
