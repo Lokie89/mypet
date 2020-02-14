@@ -9,14 +9,14 @@ import java.util.List;
 @Service
 public class SortService {
 
-    public List<Pet> sortPet(List<Pet> petList, String condition) {
+    public List<Pet> sortPet(List<Pet> petList, String condition, boolean ascending) {
         PetSortCondition petSortCondition = PetSortCondition.valueOf(condition);
-        return petSortCondition.sort(petList);
+        return petSortCondition.sort(petList, ascending);
     }
 
-    public List<Board> sortBoard(List<Board> boardList, String condition) {
+    public List<Board> sortBoard(List<Board> boardList, String condition, boolean ascending) {
         BoardSortCondition boardSortCondition = BoardSortCondition.valueOf(condition);
-        return boardSortCondition.sort(boardList);
+        return boardSortCondition.sort(boardList, ascending);
     }
 
 }

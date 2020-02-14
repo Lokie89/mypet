@@ -12,7 +12,7 @@
     
 ### 요구사항
 ##### 1. 유기동물 전체목록을 볼 수 있다.
-
+    1.요구사항을 적는다
         a. 전체목록 가져오기 (DB)
         b. 원하는 분류로 순서를 정렬 (함수) 
         c. 원하는 분류에 맞는 목록 출력 (함수 sortPetFromClassification)
@@ -28,6 +28,8 @@
         그래서 현재 가지고 있는 Pet, Board 에 필요한 Condition들을 나열 객체상수로 만듬
         객체상수 안에 메소드를 각 해당하는 Comparator 객체를 사용하여 정의.... 해야 ... 됨 여기 아직 안됨
         + SortService 에서 실행하는 메소드를 합치?
+        
+        - 매개변수 값에 따라 Comparator Reverse 
         
     3. 테스트를 만든다
         SortServiceTest

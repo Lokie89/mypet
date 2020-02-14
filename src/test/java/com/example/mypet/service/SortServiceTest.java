@@ -21,10 +21,13 @@ class SortServiceTest {
     public void sortPetTest(){
         List<Pet> petList = new ArrayList<>();
         Pet pet1 = new Pet();
+        pet1.setAge(50);
         Pet pet2 = new Pet();
+        pet2.setAge(30);
         petList.add(pet1);
         petList.add(pet2);
-        sortService.sortPet(petList,"SITUATION");
+        List<Pet> sortPet = sortService.sortPet(petList,"AGE",false);
+        assertEquals(50,sortPet.get(0).getAge());
     }
 
     @Test
@@ -34,6 +37,6 @@ class SortServiceTest {
         Board board2 = new Board();
         boardList.add(board1);
         boardList.add(board2);
-        sortService.sortBoard(boardList,"MEMBER");
+        sortService.sortBoard(boardList,"MEMBER",true);
     }
 }
