@@ -22,7 +22,7 @@
         그러므로 정렬 인터페이스를 만든다. -> 정렬 행위가 필요한 곳에 implements 시킨다
         정렬하기 위해선 List 와 Condition(조건) 이 필요하다.
         List 와 Condition을 받아 해당맞는 조건을 실행할 SortService를 만든다.
-        Condition 내용은 여러개가 될수 있다. if else 로 써도 분류 가능하지만 enum을 배웠으니 사용한다
+        Condition 내용은 여러개가 될 수 있다. if else 로 써도 분류 가능하지만 enum을 배웠으니 사용한다
         // enum 객체에 함수를 넣을 수 있더라... 처음알았음
         // enum 객체에 interface를 implements 시키면 강제로 enum의 나열된 객체상수? 안에 강제로 메소드가 주입? 하게 됨
         그래서 현재 가지고 있는 Pet, Board 에 필요한 Condition들을 나열 객체상수로 만듬
@@ -30,6 +30,14 @@
         + SortService 에서 실행하는 메소드를 합치?
         
         - 매개변수 값에 따라 Comparator Reverse 
+        
+        - Sorter MyPetComparator 를 분리 하고 각 역할 분담을 시킴
+          Sorter 는 List 와 Comparator 를 들고 sort 해줌
+          PetComparator, BoardComparator 를 묶기 위해 MyPetComparator를 사용
+          MyPetComparator 는 각 Condition에 맞는 Comparator 객체를 반환하게 함
+          
+        + // TODO : PetComparator, BoardComparator 에 MyPetComparator 를 implements 시켰음
+                    어떤 condition을 던지던 그에 맞는 condition 을 찾아 해당 comparator 를 반환하게 만들고 싶다. 
         
     3. 테스트를 만든다
         SortServiceTest
