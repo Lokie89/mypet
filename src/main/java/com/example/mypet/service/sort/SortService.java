@@ -39,19 +39,19 @@ public class SortService<T> {
         return sort(list, myPetComparator, descending);
     }
 
-    public List<T> sortTest(List<T> list, String condition, boolean descending){
+//    public List<T> sortTest(List<T> list, String condition, boolean descending){
 //        MyPetComparator myPetComparator = getComparator(MyPetComparator,condition);
-        return null;
-    }
+//        return null;
+//    }
 
-    public <E extends Enum<E> & MyPetComparator> E getComparator(E[] values, String condition) {
-        for(E e : values){
-            if(e.getComparator().equals(condition)){
-                return e;
+    public <T extends Enum<T> & MyPetComparator> T getComparator(T[] values, String condition) {
+        for (T t : values) {
+            if (t.getComparator().equals(condition)) {
+                return t;
             }
         }
         try {
-            throw new IllegalAccessException("Boring:"+condition);
+            throw new IllegalAccessException("Boring:" + condition);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
