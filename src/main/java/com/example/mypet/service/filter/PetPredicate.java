@@ -39,12 +39,12 @@ public enum PetPredicate implements MyPetPredicate<Pet> {
     }, GENDER {
         @Override
         public Predicate<Pet> getPredicate(long id) {
-            return null;
+            return pet -> pet.getGender() == id;
         }
 
         @Override
         public Predicate<Pet> getPredicate(String str) {
-            return pet -> pet.getGender() == str.indexOf(0);
+            return null;
         }
     }, /*NEUTERED {
         @Override
@@ -64,7 +64,7 @@ public enum PetPredicate implements MyPetPredicate<Pet> {
 
         @Override
         public Predicate<Pet> getPredicate(String openDate) {
-            return pet -> pet.getOpenDate().equals(openDate);
+            return pet -> pet.getOpenDate().contains(openDate);
         }
     }, CLOSE_DATE {
         @Override
@@ -74,7 +74,7 @@ public enum PetPredicate implements MyPetPredicate<Pet> {
 
         @Override
         public Predicate<Pet> getPredicate(String closeDate) {
-            return pet -> pet.getCloseDate().equals(closeDate);
+            return pet -> pet.getCloseDate().contains(closeDate);
         }
     }, CLASSIFICATION {
         @Override

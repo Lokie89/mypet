@@ -1,6 +1,5 @@
 package com.example.mypet.service.filter;
 
-import com.example.mypet.service.sort.MyPetComparator;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,33 +38,13 @@ public class FilterService<T> {
     }
 
     public List<T> filterBoard(List<T> list, String condition, long id) {
-        MyPetPredicate myPetPredicate = PetPredicate.valueOf(condition);
+        MyPetPredicate myPetPredicate = BoardPredicate.valueOf(condition);
         return filter(list, myPetPredicate, id);
     }
 
     public List<T> filterBoard(List<T> list, String condition, String keyword) {
-        MyPetPredicate myPetPredicate = PetPredicate.valueOf(condition);
+        MyPetPredicate myPetPredicate = BoardPredicate.valueOf(condition);
         return filter(list, myPetPredicate, keyword);
-    }
-
-
-//    public List<T> sortTest(List<T> list, String condition, boolean descending){
-//        MyPetComparator myPetComparator = getComparator(MyPetComparator,condition);
-//        return null;
-//    }
-
-    public <T extends Enum<T> & MyPetComparator> T getComparator(T[] values, String condition) {
-        for (T t : values) {
-            if (t.getComparator().equals(condition)) {
-                return t;
-            }
-        }
-        try {
-            throw new IllegalAccessException("Boring:" + condition);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
 }

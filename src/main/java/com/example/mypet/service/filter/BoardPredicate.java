@@ -34,7 +34,7 @@ public enum BoardPredicate implements MyPetPredicate<Board> {
 
         @Override
         public Predicate<Board> getPredicate(String title) {
-            return board -> board.getTitle().contains(title);
+            return board -> board.getTitle().toLowerCase().contains(title.toLowerCase());
         }
     }, DESCRIPTION {
         @Override
@@ -44,7 +44,7 @@ public enum BoardPredicate implements MyPetPredicate<Board> {
 
         @Override
         public Predicate<Board> getPredicate(String description) {
-            return board -> board.getDescription().contains(description);
+            return board -> board.getDescription().toLowerCase().contains(description.toLowerCase());
         }
     };
 
