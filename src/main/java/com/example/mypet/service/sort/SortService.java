@@ -25,10 +25,6 @@ public class SortService<T> {
         return sortGenerate(list, order(comparator, descending));
     }
 
-
-    // https://wedul.site/289
-    // https://homo-ware.tistory.com/69
-    // TODO : 두개 합치기
     public List<T> sortPet(List<T> list, String condition, boolean descending) {
         MyPetComparator myPetComparator = PetComparator.valueOf(condition);
         return sort(list, myPetComparator, descending);

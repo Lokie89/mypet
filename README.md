@@ -10,7 +10,7 @@
     4. DB를 추가한다
     5. 코딩한다
     
-### 요구사항
+### 요구사항 화면입장
 ##### 1. 유기동물 전체목록을 볼 수 있다.
     1.요구사항을 적는다
         a. 전체목록 가져오기 (DB)
@@ -18,6 +18,8 @@
         c. 원하는 분류에 맞는 목록 출력 (함수 sortPetFromClassification)
         
     2. 고민한다
+    // 여기선 정렬이 필요한 것이 아니라 Filter 가 필요하였음.. Sort 다 만들고 깨달아서 Filter 생성함.
+    // 바뀐 내용은 Comparator 객체가 아닌 Predicate 객체로 바꿔서 보면 됨.
         정렬이라는 행위를 여러 곳에서 할 수 있다.
         그러므로 정렬 인터페이스를 만든다. -> 정렬 행위가 필요한 곳에 implements 시킨다
         정렬하기 위해선 List 와 Condition(조건) 이 필요하다.
@@ -37,7 +39,9 @@
           MyPetComparator 는 각 Condition에 맞는 Comparator 객체를 반환하게 함
           
         + // TODO : PetComparator, BoardComparator 에 MyPetComparator 를 implements 시켰음
-                    어떤 condition을 던지던 그에 맞는 condition 을 찾아 해당 comparator 를 반환하게 만들고 싶다. 
+                    어떤 condition을 던지던 그에 맞는 condition 을 찾아 해당 comparator 를 반환하게 만들고 싶다.
+        - // 어떤 condition이든 해당 condition을 찾으면 안됨, 동일 이름의 condition이 있을 수 있음.
+             이것까지 수용하려면 Pet 과 Board 의 공통 분모를 만들어야함
         
     3. 테스트를 만든다
         SortServiceTest
@@ -47,9 +51,12 @@
     
 ##### 2. 유기동물 상세페이지를 볼 수 있다.
     1. 요구사항을 적는다.
-        a. 
-
+        a. 해당 Pet 의 id를 받는다
+        b. 해당 Pet 의 정보를 전달한다.
+    2. 고민한다
+        
 ##### 3. 실종동물 전체목록을 볼 수 있다.
+    요구사항 1번과 동일
 ##### 4. 실종동물 상세페이지를 볼 수 있다.
 ##### 5. 게시판 글을 쓸 수 있다.
 ##### 6. 게시판 글을 수정할 수 있다.

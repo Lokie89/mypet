@@ -23,10 +23,6 @@ public class FilterService<T> {
         return filterGenerate(list, predicate);
     }
 
-
-    // https://wedul.site/289
-    // https://homo-ware.tistory.com/69
-    // TODO : 네개 합치기
     public List<T> filterPet(List<T> list, String condition, String keyword) {
         MyPetPredicate myPetPredicate = PetPredicate.valueOf(condition);
         return filter(list, myPetPredicate, keyword);
