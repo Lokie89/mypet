@@ -58,6 +58,10 @@
                 + 이제 소문자 대문자를 구분지어줄수 있는 converter를 찾아서 넣어줄것
                 + FilterType 들이 반환하는 함수에 들어가는 파라미터값이 long 형태 또는 String 형태가 있음
                   하나로 결합하고 싶음... 전부 String 으로 받아서 long 이 필요할시 강제 형변환 해준다? 
+                  
+                - 정리 Sort, Filter 모두 ArrangeList에서 자동으로 생성하기 위한 객체로 사용
+                  ArrangeList 는 1급 컬렉션
+                  
     3. 테스트를 만든다
         SortServiceTest
     4. DB를 추가한다
