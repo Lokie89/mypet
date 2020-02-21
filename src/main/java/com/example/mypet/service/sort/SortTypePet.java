@@ -4,48 +4,63 @@ import com.example.mypet.domain.pet.Pet;
 
 import java.util.Comparator;
 
-public enum PetComparator implements MyPetComparator<Pet> {
+public enum SortTypePet implements SortType<Pet> {
 
     SITUATION {
         @Override
         public Comparator<Pet> getComparator() {
             return Comparator.comparingDouble(Pet::getSituationId);
         }
-    }, NAME {
+    },
+
+    NAME {
         @Override
         public Comparator<Pet> getComparator() {
             return Comparator.comparing(Pet::getName);
         }
-    }, AGE {
+    },
+
+    AGE {
         @Override
         public Comparator<Pet> getComparator() {
             return Comparator.comparingInt(Pet::getAge);
         }
-    }, GENDER {
+    },
+
+    GENDER {
         @Override
         public Comparator<Pet> getComparator() {
             return Comparator.comparingDouble(Pet::getGender);
         }
-    }, NEUTERED {
+    },
+
+    NEUTERED {
         @Override
         public Comparator<Pet> getComparator() {
             return Comparator.comparing(Pet::isNeutered);
         }
-    }, OPEN_DATE {
+    },
+
+    OPEN_DATE {
         @Override
         public Comparator<Pet> getComparator() {
             return Comparator.comparing(Pet::getOpenDate);
         }
-    }, CLOSE_DATE {
+    },
+
+    CLOSE_DATE {
         @Override
         public Comparator<Pet> getComparator() {
             return Comparator.comparing(Pet::getCloseDate);
         }
-    }, CLASSIFICATION {
+    },
+
+    CLASSIFICATION {
         @Override
         public Comparator<Pet> getComparator() {
             return Comparator.comparingDouble(Pet::getClassificationId);
         }
-    };
+    },
+    ;
 
 }

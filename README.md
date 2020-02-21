@@ -42,7 +42,22 @@
                     어떤 condition을 던지던 그에 맞는 condition 을 찾아 해당 comparator 를 반환하게 만들고 싶다.
         - // 어떤 condition이든 해당 condition을 찾으면 안됨, 동일 이름의 condition이 있을 수 있음.
              이것까지 수용하려면 Pet 과 Board 의 공통 분모를 만들어야함
-        
+        상담
+            - 코드가 복잡하다.
+            - 너무 확장성을 고려했다?
+            - 개선 방법
+                1. sort, filter 기능을 각 Domain 에 구현한다
+                2. Sort, Filter 클래스를 단순화 한다.
+                
+                2번을 선택함, 각 Domain 에 기능 구현 하는것도 좋지만 자주쓰일 기능으로 생각돼서
+                기존 코드중 ordering 부분을 enum 화 시켜서 comparator를 자동으로 reversed 시킴
+                위의 문제중 PetComparator( 현재는 PetSortType 으로 이름 바꿈 )와 BoardComparator 의 기능 결합을 위해
+                MyPetComparator 인터페이스로 연결 시켜놨지만 실제 들어오는 값을 확인하고 구현하는 로직이 필요했음
+                그러나 Contorller에서 parameter로 넘어오는 값 자체를 Enum으로 받을 수 있음.
+                물론 다른 문자가 들어오면 Exception이 나기때문에 @ExceptionHandler를 정의해줌..
+                + 이제 소문자 대문자를 구분지어줄수 있는 converter를 찾아서 넣어줄것
+                + FilterType 들이 반환하는 함수에 들어가는 파라미터값이 long 형태 또는 String 형태가 있음
+                  하나로 결합하고 싶음... 전부 String 으로 받아서 long 이 필요할시 강제 형변환 해준다? 
     3. 테스트를 만든다
         SortServiceTest
     4. DB를 추가한다
