@@ -17,11 +17,11 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
 
-    public ArrangeList<Board> getList(SortType sortType, Ordering ordering) {
+    public ArrangeList<Board> getList(SortType<Board> sortType, Ordering ordering) {
         return new ArrangeList<Board>(boardRepository.findAll(), ordering.order(sortType.getComparator()));
     }
 
-    public ArrangeList<Board> getList(FilterType filterType, String param) {
+    public ArrangeList<Board> getList(FilterType<Board> filterType, String param) {
         try {
             return new ArrangeList<>(boardRepository.findAll(), filterType.getPredicate(param));
         } catch (NullPointerException e) {
@@ -32,4 +32,9 @@ public class BoardService {
     public Board getBoard(long id) {
         return boardRepository.getOne(id);
     }
+
+    public Board saveBoard(Board board){
+        return boardRepository.save(board);
+    }
+
 }
