@@ -2,13 +2,15 @@ package com.example.mypet.controller;
 
 import com.example.mypet.domain.board.Board;
 import com.example.mypet.domain.pet.Pet;
+import com.example.mypet.service.ArrangeList;
 import com.example.mypet.service.BoardService;
 import com.example.mypet.service.PetService;
 import com.example.mypet.service.filter.FilterType;
 import com.example.mypet.service.sort.Ordering;
 import com.example.mypet.service.sort.SortTypePet;
-import com.example.mypet.service.ArrangeList;
 import org.springframework.core.convert.ConversionFailedException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,31 +28,31 @@ public class MyPetController {
     }
 
     @GetMapping("/sort/pet")
-    public ArrangeList<Pet> sortPet(
+    public ResponseEntity<ArrangeList<Pet>> sortPet(
             @RequestParam(value = "sortType") SortTypePet sortType,
             @RequestParam(defaultValue = "DESC", value = "ordering") Ordering ordering) {
-        return petService.getPetList(sortType, ordering);
+        return new ResponseEntity<>(petService.getList(sortType, ordering), HttpStatus.OK);
     }
 
     @GetMapping("/filter/pet")
     public ArrangeList<Pet> filterPet(
             @RequestParam(value = "filterType") FilterType filterType,
             @RequestParam(value = "param") String param) {
-        return petService.getPetList(filterType, param);
+        return petService.getList(filterType, param);
     }
 
     @GetMapping("/sort/board")
     public ArrangeList<Board> sortBoard(
             @RequestParam(value = "sortType") SortTypePet sortType,
             @RequestParam(defaultValue = "DESC", value = "ordering") Ordering ordering) {
-        return boardService.getPetList(sortType, ordering);
+        return boardService.getList(sortType, ordering);
     }
 
     @GetMapping("/filter/board")
     public ArrangeList<Board> filterBoard(
             @RequestParam(value = "filterType") FilterType filterType,
             @RequestParam(value = "param") String param) {
-        return boardService.getPetList(filterType, param);
+        return boardService.getList(filterType, param);
     }
 
     @ExceptionHandler(ConversionFailedException.class)

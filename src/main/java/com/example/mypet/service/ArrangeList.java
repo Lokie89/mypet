@@ -1,20 +1,23 @@
 package com.example.mypet.service;
 
+import lombok.Getter;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+@Getter
 public class ArrangeList<T> {
 
-    private List<T> list;
+    private List<T> arrangedList;
 
     public ArrangeList(List<T> list, Comparator<T> comparator) {
-        this.list = sort(list, comparator);
+        this.arrangedList = sort(list, comparator);
     }
 
     public ArrangeList(List<T> list, Predicate<T> predicate) {
-        this.list = filter(list, predicate);
+        this.arrangedList = filter(list, predicate);
     }
 
     private List<T> sort(List<T> list, Comparator<T> comparator) {
@@ -32,4 +35,5 @@ public class ArrangeList<T> {
                 .collect(Collectors.toList())
                 ;
     }
+
 }

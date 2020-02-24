@@ -17,11 +17,11 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
 
-    public ArrangeList<Board> getPetList(SortType sortType, Ordering ordering) {
+    public ArrangeList<Board> getList(SortType sortType, Ordering ordering) {
         return new ArrangeList<Board>(boardRepository.findAll(), ordering.order(sortType.getComparator()));
     }
 
-    public ArrangeList<Board> getPetList(FilterType filterType, String param) {
+    public ArrangeList<Board> getList(FilterType filterType, String param) {
         return new ArrangeList<Board>(boardRepository.findAll(), filterType.getPredicate(param));
     }
 }

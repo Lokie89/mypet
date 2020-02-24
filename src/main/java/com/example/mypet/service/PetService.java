@@ -21,7 +21,7 @@ public class PetService {
         this.petRepository = petRepository;
     }
 
-    public ArrangeList<Pet> getPetList(SortType sortType, Ordering ordering) {
+    public ArrangeList<Pet> getList(SortType sortType, Ordering ordering) {
         List<Pet> petList = new ArrayList<>();
         Pet pet1 = new Pet();
         pet1.setAge(50);
@@ -33,7 +33,7 @@ public class PetService {
 //        return new ArrangeList<Pet>(petRepository.findAll(), ordering.order(sortType.getComparator()));
     }
 
-    public ArrangeList<Pet> getPetList(FilterType filterType, String param) {
+    public ArrangeList<Pet> getList(FilterType filterType, String param) {
         return new ArrangeList<Pet>(petRepository.findAll(), filterType.getPredicate(param));
     }
 

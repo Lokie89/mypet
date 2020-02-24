@@ -61,7 +61,8 @@
                   
                 - 정리 Sort, Filter 모두 ArrangeList에서 자동으로 생성하기 위한 객체로 사용
                   ArrangeList 는 1급 컬렉션
-                  
+                + Resolved [org.springframework.http.converter.HttpMessageNotWritableException: No converter found for return value of type: class com.example.mypet.service.ArrangeList]
+                  ArrangeList ( 1급 컬렉션으로 응답하려 하니 이 오류가 생김 ) -> Lombok @Getter로 해결됨... 이거 쓰면 안되는거 같은데
     3. 테스트를 만든다
         SortServiceTest
     4. DB를 추가한다
