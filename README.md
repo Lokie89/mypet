@@ -63,6 +63,8 @@
                   ArrangeList 는 1급 컬렉션
                 + Resolved [org.springframework.http.converter.HttpMessageNotWritableException: No converter found for return value of type: class com.example.mypet.service.ArrangeList]
                   ArrangeList ( 1급 컬렉션으로 응답하려 하니 이 오류가 생김 ) -> Lombok @Getter로 해결됨... 이거 쓰면 안되는거 같은데
+                + Controller uri - /pet /board로 sort 와 filter 부분을 모두 커버? 하는것이 사용자 입장에서 좋을거 같다고 생각했음.
+                    그래서 sort 와 filter를 구분지을 enum 을 생성함
     3. 테스트를 만든다
         SortServiceTest
     4. DB를 추가한다
@@ -76,7 +78,7 @@
     2. 고민한다
         
 ##### 3. 실종동물 전체목록을 볼 수 있다.
-    요구사항 1번과 동일
+    요구사항 1번 포함
 ##### 4. 실종동물 상세페이지를 볼 수 있다.
 ##### 5. 게시판 글을 쓸 수 있다.
 ##### 6. 게시판 글을 수정할 수 있다.

@@ -16,7 +16,7 @@ public enum FilterTypeBoard implements FilterType<Board> {
     MEMBER {
         @Override
         public Predicate<Board> getPredicate(String memberId) {
-            return board -> board.getMemberId() ==  Long.parseLong(memberId);
+            return board -> board.getMemberId() == Long.parseLong(memberId);
         }
     },
 

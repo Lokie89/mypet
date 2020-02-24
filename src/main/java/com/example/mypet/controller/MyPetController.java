@@ -5,16 +5,15 @@ import com.example.mypet.domain.pet.Pet;
 import com.example.mypet.service.ArrangeList;
 import com.example.mypet.service.BoardService;
 import com.example.mypet.service.PetService;
-import com.example.mypet.service.filter.FilterType;
+import com.example.mypet.service.filter.FilterTypeBoard;
+import com.example.mypet.service.filter.FilterTypePet;
 import com.example.mypet.service.sort.Ordering;
+import com.example.mypet.service.sort.SortTypeBoard;
 import com.example.mypet.service.sort.SortTypePet;
 import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MyPetController {
@@ -27,36 +26,58 @@ public class MyPetController {
         this.boardService = boardService;
     }
 
-    @GetMapping("/sort/pet")
+    private ResponseEntity responseBadRequest(){
+        return responseEntity(null,HttpStatus.BAD_REQUEST);
+    }
+
+    private ResponseEntity responseOK(Object object){
+        return responseEntity(object,HttpStatus.OK);
+    }
+
+    private ResponseEntity responseEntity(Object object, HttpStatus httpStatus) {
+        return new ResponseEntity(object, httpStatus);
+    }
+
+    @GetMapping("/pet/sort")
     public ResponseEntity<ArrangeList<Pet>> sortPet(
-            @RequestParam(value = "sortType") SortTypePet sortType,
+            @RequestParam(defaultValue = "ID", value = "sortType") SortTypePet sortType,
             @RequestParam(defaultValue = "DESC", value = "ordering") Ordering ordering) {
-        return new ResponseEntity<>(petService.getList(sortType, ordering), HttpStatus.OK);
+        return responseOK(petService.getList(sortType, ordering));
     }
 
-    @GetMapping("/filter/pet")
-    public ArrangeList<Pet> filterPet(
-            @RequestParam(value = "filterType") FilterType filterType,
-            @RequestParam(value = "param") String param) {
-        return petService.getList(filterType, param);
+    @GetMapping("/pet/filter")
+    public ResponseEntity<ArrangeList<Pet>> filterPet(
+            @RequestParam(required = false, value = "filterType") FilterTypePet filterType,
+            @RequestParam(required = false, value = "param") String param) {
+        return responseOK(petService.getList(filterType, param));
     }
 
-    @GetMapping("/sort/board")
-    public ArrangeList<Board> sortBoard(
-            @RequestParam(value = "sortType") SortTypePet sortType,
+    @GetMapping("/board/sort")
+    public ResponseEntity<ArrangeList<Board>> sortBoard(
+            @RequestParam(defaultValue = "ID", value = "sortType") SortTypeBoard sortType,
             @RequestParam(defaultValue = "DESC", value = "ordering") Ordering ordering) {
-        return boardService.getList(sortType, ordering);
+        return responseOK(boardService.getList(sortType, ordering));
     }
 
-    @GetMapping("/filter/board")
-    public ArrangeList<Board> filterBoard(
-            @RequestParam(value = "filterType") FilterType filterType,
-            @RequestParam(value = "param") String param) {
-        return boardService.getList(filterType, param);
+    @GetMapping("/board/filter")
+    public ResponseEntity<ArrangeList<Board>> filterBoard(
+            @RequestParam(required = false, value = "filterType") FilterTypeBoard filterType,
+            @RequestParam(required = false, value = "param") String param) {
+        return responseOK(boardService.getList(filterType, param));
     }
 
     @ExceptionHandler(ConversionFailedException.class)
-    public String handleError() {
-        return "Error";
+    public ResponseEntity handleError() {
+        return responseBadRequest();
+    }
+
+    @GetMapping("/pet/{id}")
+    public ResponseEntity<Pet> getPet(@PathVariable long id) {
+        return responseOK(petService.getPet(id));
+    }
+
+    @GetMapping("/board/{id}")
+    public ResponseEntity<Board> getBoard(@PathVariable long id) {
+        return responseOK(boardService.getBoard(id));
     }
 }

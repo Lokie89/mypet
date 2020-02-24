@@ -22,6 +22,14 @@ public class BoardService {
     }
 
     public ArrangeList<Board> getList(FilterType filterType, String param) {
-        return new ArrangeList<Board>(boardRepository.findAll(), filterType.getPredicate(param));
+        try {
+            return new ArrangeList<>(boardRepository.findAll(), filterType.getPredicate(param));
+        } catch (NullPointerException e) {
+            return new ArrangeList<>(boardRepository.findAll());
+        }
+    }
+
+    public Board getBoard(long id) {
+        return boardRepository.getOne(id);
     }
 }

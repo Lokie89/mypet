@@ -6,6 +6,13 @@ import java.util.Comparator;
 
 public enum SortTypePet implements SortType<Pet> {
 
+    ID {
+        @Override
+        public Comparator<Pet> getComparator() {
+            return Comparator.comparingDouble(Pet::getId);
+        }
+    },
+
     SITUATION {
         @Override
         public Comparator<Pet> getComparator() {

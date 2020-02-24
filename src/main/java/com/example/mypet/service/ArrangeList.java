@@ -12,6 +12,10 @@ public class ArrangeList<T> {
 
     private List<T> arrangedList;
 
+    public ArrangeList(List<T> list) {
+        this.arrangedList = list;
+    }
+
     public ArrangeList(List<T> list, Comparator<T> comparator) {
         this.arrangedList = sort(list, comparator);
     }
@@ -37,3 +41,5 @@ public class ArrangeList<T> {
     }
 
 }
+
+
