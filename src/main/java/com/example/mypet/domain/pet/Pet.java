@@ -21,6 +21,8 @@ public class Pet {
     private boolean isNeutered;
     private String openDate;
     private String closeDate;
+    private double xLocation;
+    private double yLocation;
     private long reporter;
     private long supporter;
     private long classificationId;
